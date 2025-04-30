@@ -1,0 +1,26 @@
+interface LoginResponse {
+      success: boolean;
+      error?: string;
+}
+
+export async function loginUser(username: string, password: string): Promise<LoginResponse> {
+      try {
+            const response = await fetch('http://localhost:8002/login', {
+                  method: 'POST',
+                  headers: {
+                        'Content-Type': 'application/json',
+                  },
+                  body: JSON.stringify({ username, password }),
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                  return { success: true };
+            } else {
+                  return { success: false, error: data.message || 'Login failed' };
+            }
+      } catch (error) {
+            return { success: false, error: 'Network error, please try again later' };
+      }
+}
