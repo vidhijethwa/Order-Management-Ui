@@ -78,7 +78,6 @@ export default function LoginPage() {
                               >
                                     Login
                               </button>
-                              <p className='text-black'>use example as username and example@123 as password.</p>
                         </form>
                   </div>
             </main>
