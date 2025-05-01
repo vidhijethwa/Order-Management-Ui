@@ -2,7 +2,7 @@
 
 export const placeOrder = async (orderType: string, quantity: string) => {
       try {
-            const res = await fetch('http://localhost:8002/placeOrder', {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/placeOrder`, {
                   method: 'POST',
                   headers: {
                         'Content-Type': 'application/json',
@@ -24,8 +24,7 @@ export const placeOrder = async (orderType: string, quantity: string) => {
 
 export const fetchOrders = async () => {
       try {
-            const res = await fetch('http://localhost:8002/fetchOrder');
-            console.log("res", res);
+            const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/fetchOrder`);
 
             const data = await res.json();
 
